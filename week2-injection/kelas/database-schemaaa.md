@@ -44,14 +44,16 @@ Setelah mengetahui jumlah kolom, saya bisa menyusun payload untuk mengambil skem
 *   **Hasil Akhir:** Permintaan berhasil, dan server mengembalikan respons JSON yang tidak hanya berisi data produk, tetapi juga seluruh definisi skema dari tabel `sqlite_schema`.
 *   **Kesimpulan:** Serangan `UNION SELECT` ini sukses karena berhasil menyuntikkan query baru ke dalam query asli, sehingga memaksa server untuk menampilkan informasi yang seharusnya tidak dapat diakses.
 
-*   5. Bukti 
-<img width="1845" height="734" alt="Screenshot 2025-09-09 213832" src="https://github.com/user-attachments/assets/7b7e413c-d366-425f-804e-38165750371c" />
+### 5. Bukti 
+<img width="1905" height="578" alt="Screenshot 2025-09-09 211042" src="https://github.com/user-attachments/assets/005247cb-715d-4f91-a9bd-ba1551c7e8d7" />
 
-<img width="1845" height="734" alt="Screenshot 2025-09-09 213832" src="https://github.com/user-attachments/assets/836c037a-edf9-4d85-8b30-8ffa5be285f5" />
+<img width="1920" height="1080" alt="Screenshot 2025-09-09 210823" src="https://github.com/user-attachments/assets/60af30c9-46ea-41a5-b2e7-59dc46b90c39" />
 
-<img width="1869" height="1022" alt="Screenshot 2025-09-09 222023" src="https://github.com/user-attachments/assets/1730eb24-eead-49e0-b368-db3ebc3a1c3b" />
+<img width="1920" height="1080" alt="Screenshot 2025-09-09 210953" src="https://github.com/user-attachments/assets/480bee01-0ed1-42f4-8a63-2cef26845f23" />
+
 
 <img width="1835" height="960" alt="Screenshot 2025-09-09 222125" src="https://github.com/user-attachments/assets/f10e8340-3b9c-4472-9e2b-27a46a75ed0b" />
+
 
 
 
