@@ -22,7 +22,7 @@ Berikut adalah payload yang digunakan:
 ```
 
 #### Eksekusi Serangan dengan Konsol Peramban
-Saya mencoba beberapa metode untuk mengirim payload ini. Setelah gagal dengan `curl` di Command Prompt dan PowerShell karena masalah *quoting*, saya beralih menggunakan fungsi `fetch` di konsol peramban. Metode ini efektif karena dapat menangani objek JSON dengan sempurna.
+saya menggunakan fungsi `fetch` di console. Metode ini efektif karena dapat menangani objek JSON dengan sempurna.
 
 Kode yang berhasil:
 
@@ -44,3 +44,4 @@ Serangan SQL Injection ini berhasil menciptakan data pengguna sementara selama p
 
 ### Bukti 
 <img width="1861" height="958" alt="Screenshot 2025-09-09 225759" src="https://github.com/user-attachments/assets/d3dee9ea-7b12-4940-a7d1-2b78430f6509" />
+
