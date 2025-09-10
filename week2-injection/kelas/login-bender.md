@@ -29,10 +29,12 @@ Setelah alamat email Bender diketahui, saya dapat merancang muatan *SQL Injectio
 Keberhasilan serangan ini bersumber dari kegagalan aplikasi dalam melakukan proses pembersihan (sanitasi) atau validasi terhadap input yang diterima dari pengguna sebelum digabungkan ke dalam kueri SQL. Muatan yang disisipkan berhasil memanipulasi perintah yang diterima oleh basis data, sehingga proses verifikasi kata sandi dilewati secara total. Hal ini menyoroti sebuah celah keamanan fatal yang memungkinkan pengambilalihan akun pengguna mana pun, asalkan alamat email target berhasil diketahui.
 
 ### Bukti 
+
 <img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/a5c335ad-a036-47f9-8ed5-a35035e24ae2" />
 
 <img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/4ef01bcf-e4b6-48af-8258-af84e2db4d4e" />
 
 <img width="685" height="487" alt="image" src="https://github.com/user-attachments/assets/c2aa02d3-eba6-47a4-ae86-54c8a08e798e" />
+
 
 
