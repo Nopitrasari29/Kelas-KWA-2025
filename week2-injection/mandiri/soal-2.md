@@ -1,7 +1,3 @@
-Tentu, ini adalah `write-up` kedua yang Anda berikan, sudah diformat dengan benar dalam Markdown.
-
-***
-
 # Write-Up: SQL Injection - Lab Login Bypass
 
 ## 1. Informasi Lab
@@ -42,9 +38,10 @@ Eksploitasi dilakukan dengan mencegat dan memodifikasi permintaan `POST` dari fo
 4.  **Injeksi Payload**:
     *   Pada Burp Suite, modifikasi bagian **Body** dari permintaan, yang berisi parameter `username` dan `password`.
     *   Ubah nilai dari parameter `username` menjadi payload SQL Injection berikut:
-        ```sql
+       
         administrator'--
-        ```    *   **Penjelasan Payload**:
+        
+        *   **Penjelasan Payload**:
         *   `administrator`: Nama pengguna yang ingin dituju.
         *   `'` : Mengakhiri klausa string `username` pada kueri SQL, memungkinkan penyisipan kode SQL.
         *   `--`: Karakter komentar yang akan membuat server mengabaikan bagian dari kueri SQL yang tersisa, yaitu pemeriksaan kata sandi (`AND password = '...'`).
@@ -72,5 +69,6 @@ Eksploitasi login bypass ini berhasil dengan menyisipkan payload SQL yang valid 
 <img width="1444" height="539" alt="Screenshot 2025-09-10 111410" src="https://github.com/user-attachments/assets/105ae0ff-afa2-4e88-8dfa-8f14a1cc2b2a" />
 
 <img width="1919" height="1079" alt="Screenshot 2025-09-10 111451" src="https://github.com/user-attachments/assets/931c8af4-40a6-4829-a774-cbbeadf99fe8" />
+
 
 
