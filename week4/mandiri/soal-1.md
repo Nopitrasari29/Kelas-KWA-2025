@@ -1,9 +1,11 @@
 
 ## PortSwigger Web Security Academy: JWT Authentication Bypass via Unverified Signature
 
-#### 1\. Penjelasan Tantangan
+### 1\. Penjelasan Tantangan
 
 Tantangan ini menguji pemahaman tentang kerentanan **JWT (JSON Web Token)**, khususnya saat server gagal memverifikasi tanda tangan (`signature`) token. Tujuannya adalah untuk mendapatkan akses ke halaman `admin` dengan memanipulasi JWT dan kemudian menghapus akun `carlos`, yang menjadi syarat penyelesaian lab.
+
+**Link Resource: https://portswigger.net/web-security/jwt/lab-jwt-authentication-bypass-via-unverified-signature**
 
 ### 2\. Metodologi dan Eksploitasi
 
@@ -85,3 +87,4 @@ Kerentanan ini terjadi karena implementasi server yang tidak aman. Untuk mencega
 <img width="1920" height="1080" alt="Screenshot 2025-09-23 200746" src="https://github.com/user-attachments/assets/540afbf3-1c32-4fa3-acc3-8c02507ffd4a" />
 
 <img width="1919" height="1079" alt="Screenshot 2025-09-23 200803" src="https://github.com/user-attachments/assets/500ea5cc-4619-4a9f-b85c-a7da2a276f3d" />
+
